@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using EGroceryStore.Models;
+
+namespace EGroceryStore.Controllers
+{
+    public class StatisticsController : Controller
+    {
+        EGroceryContext db = new EGroceryContext();
+
+
+        // product statisctics data to admin 
+        public ActionResult ProductStatistics()
+        {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+
+            }
+            else
+            {
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+                Response.Cache.SetNoStore();
+                var status = db.OrderItems.GroupBy(oi => oi.ProductId).Select(g => new Statistics
+                {
+                    Name = g.FirstOrDefault().Product.Name,
+                    Quantity = g.Sum(oi => oi.Quantity)
+                })
+           .OrderByDescending(s => s.Quantity).ToList();
+                return View(status);
+
+            }
+
+        }
+    }
+}
