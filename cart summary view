@@ -1,0 +1,42 @@
+@model List<EGroceryStore.Models.CartItem>
+<link href="~/Content/customershipment.css" rel="stylesheet" />
+
+<h2>Your Cart</h2>
+<div class="cart-conatiner">
+
+@if (Model == null || !Model.Any())
+{
+    <p>Your Cart is empty </p> 
+}
+else
+{
+    <table class="tabel table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>src = "data:"</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Price* item.Quantity)</td>
+                    <td>@Html.ActionLink("Remove", "RemoveFromCart", "Cart", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })</td>
+                </tr> 
+            }
+        </tbody>
+    </table>
+    
+    <h4>Total : @Model.Sum(i=>i.Price * i.Quantity)</h4>
+    @Html.ActionLink("Place Order ", "Payment", "Payment", null, new { @class = "btn btn-success" })
+}
+</div>
+
