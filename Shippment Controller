@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using EGroceryStore.Models;
+using System.Data.Entity;
+
+namespace EGroceryStore.Controllers
+{
+    public class ShipmentController : Controller
+    {
+        EGroceryContext db = new EGroceryContext();
+
+
+        // Changing the status of shipment by admin 
+        public ActionResult Index()
+        {
+            var shipments = db.Shipments.Include("Order").ToList();
+            return View(shipments);
+        }
+
+
+        // Editting the status by admin 
+        public ActionResult Edit(int id)
+        {
+            var shipment = db.Shipments.Find(id);
+            if (shipment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(shipment);
+        }
+
+
+        // saving the changed status of shipment 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Shipment updatedshipment)
+        {
+            if (updatedshipment == null || updatedshipment.ShipmentId == 0)
+            {
+                return HttpNotFound("Invalid");
+            }
+            var originalShipment = db.Shipments.FirstOrDefault(s => s.ShipmentId == updatedshipment.ShipmentId);
+
+            if (originalShipment == null)
+            {
+                return HttpNotFound();
+            }
+            originalShipment.DeliveryStatus = updatedshipment.DeliveryStatus;
+            db.SaveChanges();
+            ViewBag.Message = "status Changed";
+            return RedirectToAction("Index");
+        }
+
+
+
+        // customer sees the order details 
+        public ActionResult customershipment()
+        {
+            int customerId = Convert.ToInt32(Session["CustomerId"]);
+            var shipments = db.Shipments.Include("Order").Where(s => s.Order.CustomerId == customerId).ToList();
+            return View(shipments);
+
+
+        }
+    }
+}
+
+
