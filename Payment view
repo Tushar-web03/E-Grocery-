@@ -1,0 +1,19 @@
+@model EGroceryStore.Models.Order
+<link href="~/Content/payment.css" rel="stylesheet" />
+<div class="payment-container">
+    <h3>Payment</h3>
+
+    <form action="@Url.Action("PaymentSuccess", "Payment")" method="post">
+
+
+        <div class="form-group">
+            <label>Select Payment Option</label>
+            <input type="radio" name="paymentMethod" value="UPI" /> UPI <br>
+            <input type="radio" name="paymentMethod" value="Card" /> Card <br>
+            <input type="radio" name="paymentMethod" value="Cashon Delivery" /> Cash On Delivery
+        </div>
+
+        <button type="submit" class="btn btn-success">Pay Now </button>
+
+    </form>
+</div>
