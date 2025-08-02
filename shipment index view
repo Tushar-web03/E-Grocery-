@@ -1,0 +1,29 @@
+@model IEnumerable<EGroceryStore.Models.Shipment>
+<link href="~/Content/shipmentindex.css" rel="stylesheet" />
+
+
+<h2>Manage Shipments</h2>
+
+<a href="@Url.Action("Index", "Product")" class="home-link">Home</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Order ID</th>
+        <th>Shipment Date</th>
+        <th>Delivery Status</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.OrderId</td>
+            <td>@item.ShipmentDate</td>
+            <td>@item.DeliveryStatus</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Shipment",  new { id = item.ShipmentId }, new { @class="btn btn-primary"})</td>
+        </tr> 
+    }
+    </table>
+
+
+
+
