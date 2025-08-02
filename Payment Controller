@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using EGroceryStore.Models;
+
+namespace EGroceryStore.Controllers
+{
+
+    public class PaymentController : Controller
+    {
+        public EGroceryContext db = new EGroceryContext();
+
+
+        //  Going to payment view 
+        public ActionResult Payment()
+        {
+            if (Session["CustomerId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+                Response.Cache.SetNoStore();
+                return View();
+            }
+        }
+
+
+        // Update Order table and Order received Successfully 
+        [HttpPost]
+        public ActionResult PaymentSuccess()
+        {
+            if (Session["CustomerId"] != null)
+            {
+                int customerId = Convert.ToInt32(Session["CustomerId"]);
+                Order newOrder = new Order
+                {
+                    CustomerId = customerId,
+                    OrderDate = DateTime.Now,
+                    Status = "Paid"
+                };
+                db.Orders.Add(newOrder);
+                db.SaveChanges();
+
+                Shipment shipment = new Shipment
+                {
+                    OrderId = newOrder.OrderId,
+                    ShipmentDate = DateTime.Now,
+                    DeliveryStatus = "Processing"
+                };
+                db.Shipments.Add(shipment);
+                db.SaveChanges();
+
+                var cart = Session["Cart"] as
+                    List<CartItem>;
+                if (cart != null && cart.Any())
+                {
+                    foreach (var item in cart)
+                    {
+                        OrderItem ordeItem = new OrderItem
+                        {
+                            OrderId = newOrder.OrderId,
+                            ProductId = item.ProductId,
+                            Quantity = item.Quantity
+                        };
+                        db.OrderItems.Add(ordeItem);
+                        db.SaveChanges();
+                    }
+                }
+
+                Session["Cart"] = null;
+            }
+            TempData["Message"] = "Received";
+
+            return RedirectToAction("Shop", "Product");
+        }
+    }
+
+}
