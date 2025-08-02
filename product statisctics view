@@ -1,0 +1,24 @@
+@model List<EGroceryStore.Models.Statistics>
+<link href="~/Content/statistics.css" rel="stylesheet" />
+
+<h2> Product Order Statistics </h2>
+<a href="@Url.Action("Index", "Product")" class="home-link" >Home</a>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Product Name </th>
+            <th>Total Quantity </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
