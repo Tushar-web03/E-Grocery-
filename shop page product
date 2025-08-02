@@ -1,0 +1,53 @@
+@model IEnumerable<EGroceryStore.Models.Product>
+
+
+
+<link href="~/Content/shop.css" rel="stylesheet" />
+<h2>Welcome @Session["Username"]</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success"  style="margin-bottom:20px;">
+        @TempData["Message"]
+    </div>
+}
+@using (Html.BeginForm("Shop", "Product", FormMethod.Get))
+{
+    <div class="search-bar" @*style="margin-bottom:20px;"*@>
+        <input type="text" name="search" value="@Request.QueryString["search"]" placeholder="Search Grocery" class="form-control" style="width:300px; display:inline-block"/>
+        <button type="submit" class="btn btn-primary">Search </button>
+        <div style="text-align:right; margin:10px;">
+            <a href="@Url.Action("Index", "Cart")" class="btn btn-primary"> Buy Now </a>
+            <a href="@Url.Action("customershipment", "Shipment")" class="btn btn-primary"> My Orders </a>
+        </div>
+    </div> 
+}  
+
+    @foreach (var item in Model)
+    {
+
+        <div class="product-card">
+            <img src="@Url.Content(item.ImageUrl)" alt="@item.Name" class="product-img"/>
+            @*<img src="@Url.Content(item.ImageUrl)" alt= "Product Image"/>*@
+            <h4>@item.Name</h4>
+            <p>Price : @item.Price</p>
+            <p>Available Quantity : @item.Quantity</p>
+
+            @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+            {
+                @Html.Hidden("ProductId", item.ProductId)
+                <label>Quantity</label>
+                <input type="number" name="quantity" value="1" min="1" max="@item.Quantity" required />
+                <button type="submit" class="btn btn-success" style="margin-top:5px;">Add to Cart</button>
+            }
+
+        </div>
+    }
+    
+
+
+
+
+
+
+
+
