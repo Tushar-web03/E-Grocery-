@@ -1,0 +1,47 @@
+@model EGroceryStore.Models.Shipment
+
+<link href="~/Content/shipmentedit.css" rel="stylesheet" />
+<h2 style="margin-top:50px; text-align:center;">Edit The Shipment</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.ShipmentId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.OrderId )
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ShipmentDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ShipmentDate)
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryStatus, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DeliveryStatus, new SelectList(new[]{"Processing", "Shipped", "Delivered","Cancelled"}), "Select Status" , new{@class="form-control"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
