@@ -1,40 +1,28 @@
 @model List<EGroceryStore.Models.Shipment>
 
-@{
-    ViewBag.Title = "Customer Shipments";
-}
-
 <h2 class="text-center">Your Shipment Details</h2>
 
-@foreach (var item in Model)
-{
-    <div class="form-horizontal" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 10px;">
-        <div class="form-group">
-            <label class="control-label col-md-2">Shipment ID:</label>
-            <div class="col-md-10">
-                <p class="form-control-static">@item.ShipmentId</p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Order ID:</label>
-            <div class="col-md-10">
-                <p class="form-control-static">@item.OrderId</p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Shipment Date:</label>
-            <div class="col-md-10">
-                <p class="form-control-static">@item.ShipmentDate.ToShortDateString()</p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Status:</label>
-            <div class="col-md-10">
-                <span class="label label-info">@item.DeliveryStatus</span>
-            </div>
-        </div>
-    </div>
-}
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Shipment Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shipment in Model)
+        {
+            foreach (var item in shipment.Order.OrderItems)
+            {
+                <tr>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@shipment.ShipmentDate.ToShortDateString()</td>
+                    <td><span class="label label-info">@shipment.DeliveryStatus</span></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
