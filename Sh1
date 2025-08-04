@@ -1,28 +1,10 @@
-@model List<EGroceryStore.Models.Shipment>
+CREATE TABLE Cart (
+    CartId INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerId INT NOT NULL,
+    ProductId INT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 1,
+    DateAdded DATETIME DEFAULT GETDATE(),
 
-<h2 class="text-center">Your Shipment Details</h2>
-
-<table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Shipment Date</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var shipment in Model)
-        {
-            foreach (var item in shipment.Order.OrderItems)
-            {
-                <tr>
-                    <td>@item.Product.ProductName</td>
-                    <td>@item.Quantity</td>
-                    <td>@shipment.ShipmentDate.ToShortDateString()</td>
-                    <td><span class="label label-info">@shipment.DeliveryStatus</span></td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+    FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId),
+    FOREIGN KEY (ProductId) REFERENCES Product(ProductId)
+);
