@@ -1,141 +1,25 @@
-Got it. ✅ Since you're currently storing cart data only in Session, it gets cleared on logout. To fix this without changing too much, we’ll store cart items in the database linked to the logged-in customer — instead of just session.
+<h2>Product Details</h2>
 
-Let’s follow these minimal steps based on your current setup:
+<table class="details-table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>@Model.Price</td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+</table>
 
-
----
-
-✅ Step 1: Create Cart Table in SQL (persistent storage)
-
-CREATE TABLE CartItems (
-    CartItemId INT PRIMARY KEY IDENTITY,
-    CustomerId INT,                          -- Link to logged-in user
-    ProductId INT,
-    ProductName NVARCHAR(100),
-    Quantity INT,
-    Price DECIMAL(10,2),
-    Total DECIMAL(10,2)
-);
-
-> 🔁 CustomerId should match your Customers table ID.
-
-
-
-
----
-
-✅ Step 2: Update CartItem Model
-
-In CartItem.cs, update to include CartItemId and CustomerId:
-
-public class CartItem
-{
-    public int CartItemId { get; set; }       // new
-    public int CustomerId { get; set; }       // new
-
-    public int ProductId { get; set; }
-    public string ProductName { get; set; }
-    public int Quantity { get; set; }
-    public decimal Price { get; set; }
-    public decimal Total { get; set; }
-}
-
-
----
-
-✅ Step 3: Add DBSet in EGroceryContext.cs
-
-public DbSet<CartItem> CartItems { get; set; }
-
-
----
-
-✅ Step 4: Modify CartController.cs to Save Cart in DB
-
-Replace session-based list with DB operations:
-
-🔄 AddToCart action:
-
-public ActionResult AddToCart(int productId, int quantity)
-{
-    var product = db.Products.Find(productId);
-    int customerId = Convert.ToInt32(Session["CustomerID"]);
-
-    var existingCartItem = db.CartItems
-        .FirstOrDefault(c => c.ProductId == productId && c.CustomerId == customerId);
-
-    if (existingCartItem != null)
-    {
-        existingCartItem.Quantity += quantity;
-        existingCartItem.Total = existingCartItem.Quantity * existingCartItem.Price;
-    }
-    else
-    {
-        CartItem item = new CartItem
-        {
-            CustomerId = customerId,
-            ProductId = product.ProductId,
-            ProductName = product.ProductName,
-            Quantity = quantity,
-            Price = product.Price,
-            Total = quantity * product.Price
-        };
-
-        db.CartItems.Add(item);
-    }
-
-    db.SaveChanges();
-    return RedirectToAction("CartSummary");
-}
-
-
----
-
-✅ CartSummary action (fetch from DB instead of Session)
-
-public ActionResult CartSummary()
-{
-    int customerId = Convert.ToInt32(Session["CustomerID"]);
-    var cartItems = db.CartItems
-        .Where(c => c.CustomerId == customerId)
-        .ToList();
-
-    ViewBag.Total = cartItems.Sum(i => i.Total);
-    return View(cartItems);
-}
-
-
----
-
-✅ Remove from cart:
-
-public ActionResult Remove(int id)
-{
-    var item = db.CartItems.Find(id);
-    if (item != null)
-    {
-        db.CartItems.Remove(item);
-        db.SaveChanges();
-    }
-    return RedirectToAction("CartSummary");
-}
-
-
----
-
-✅ Final Result
-
-Now cart items:
-
-Are saved in the database.
-
-Linked to each logged-in user.
-
-Are not lost when logging out.
-
-
-
----
-
-Let me know if you want the updated View code too (Cart page).
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
