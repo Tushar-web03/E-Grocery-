@@ -1,33 +1,36 @@
-INSERT INTO MOVIE (MovieID, DurationInMinutes, TrailerURL, PosterURL, OverallRating, VideoURL) VALUES
-(1, 180, '~/Content/Images/VideoImg/Kalki2898ADVideo.png', '~/Content/Images/PosterImg/Kalki2898AD.png', 4.5, '~/Content/Images/VideoImg/Kalki2898ADVideo.png'),
-(2, 201, '~/Content/Images/VideoImg/AnimalVideo.png', '~/Content/Images/PosterImg/Animal.png', 4.8, '~/Content/Images/VideoImg/AnimalVideo.png'),
-(3, 169, '~/Content/Images/VideoImg/JawanVideo.png', '~/Content/Images/PosterImg/Jawan.png', 4.2, '~/Content/Images/VideoImg/JawanVideo.png'),
-(4, 150, '~/Content/Images/VideoImg/Pushpa2Video.png', '~/Content/Images/PosterImg/Pushpa2.png', 4.9, '~/Content/Images/VideoImg/Pushpa2Video.png'),
-(5, 145, '~/Content/Images/VideoImg/BhoolBhulaiyaa2Video.png', '~/Content/Images/PosterImg/BhoolBhulaiyaa2.png', 3.8, '~/Content/Images/VideoImg/BhoolBhulaiyaa2Video.png'),
-(6, 140, '~/Content/Images/VideoImg/Drishyam2Video.png', '~/Content/Images/PosterImg/Drishyam2.png', 4.7, '~/Content/Images/VideoImg/Drishyam2Video.png'),
-(7, 167, '~/Content/Images/VideoImg/BrahmastraVideo.png', '~/Content/Images/PosterImg/Brahmastra.png', 3.6, '~/Content/Images/VideoImg/BrahmastraVideo.png'),
-(8, 168, '~/Content/Images/VideoImg/RockyAurRaniKiPremKahaniVideo.png', '~/Content/Images/PosterImg/RockyAurRaniKiPremKahani.png', 4.0, '~/Content/Images/VideoImg/RockyAurRaniKiPremKahaniVideo.png'),
-(9, 163, '~/Content/Images/VideoImg/SitaRamamVideo.png', '~/Content/Images/PosterImg/SitaRamam.png', 4.9, '~/Content/Images/VideoImg/SitaRamamVideo.png'),
-(10, 172, '~/Content/Images/VideoImg/SalaarVideo.png', '~/Content/Images/PosterImg/Salaar.png', 4.4, '~/Content/Images/VideoImg/SalaarVideo.png'),
+.details-table {
+    width: 70%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-(11, 168, '~/Content/Images/VideoImg/KGFChapter2Video.png', '~/Content/Images/PosterImg/KGFChapter2.png', 4.7, '~/Content/Images/VideoImg/KGFChapter2Video.png'),
-(12, 155, '~/Content/Images/VideoImg/Gadar2Video.png', '~/Content/Images/PosterImg/Gadar2.png', 4.1, '~/Content/Images/VideoImg/Gadar2Video.png'),
-(13, 130, '~/Content/Images/VideoImg/MissionRaniganjVideo.png', '~/Content/Images/PosterImg/MissionRaniganj.png', 4.3, '~/Content/Images/VideoImg/MissionRaniganjVideo.png'),
-(14, 146, '~/Content/Images/VideoImg/PathaanVideo.png', '~/Content/Images/PosterImg/Pathaan.png', 4.0, '~/Content/Images/VideoImg/PathaanVideo.png'),
-(15, 160, '~/Content/Images/VideoImg/VikramVedhaVideo.png', '~/Content/Images/PosterImg/VikramVedha.png', 4.5, '~/Content/Images/VideoImg/VikramVedhaVideo.png'),
-(16, 159, '~/Content/Images/VideoImg/ShamsheraVideo.png', '~/Content/Images/PosterImg/Shamshera.png', 3.4, '~/Content/Images/VideoImg/ShamsheraVideo.png'),
-(17, 156, '~/Content/Images/VideoImg/DasaraVideo.png', '~/Content/Images/PosterImg/Dasara.png', 4.6, '~/Content/Images/VideoImg/DasaraVideo.png'),
-(18, 147, '~/Content/Images/VideoImg/KantaraVideo.png', '~/Content/Images/PosterImg/Kantara.png', 5.0, '~/Content/Images/VideoImg/KantaraVideo.png'),
-(19, 143, '~/Content/Images/VideoImg/HiNannaVideo.png', '~/Content/Images/PosterImg/HiNanna.png', 4.3, '~/Content/Images/VideoImg/HiNannaVideo.png'),
-(20, 161, '~/Content/Images/VideoImg/DunkiVideo.png', '~/Content/Images/PosterImg/Dunki.png', 4.2, '~/Content/Images/VideoImg/DunkiVideo.png'),
+.details-table th,
+.details-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
 
-(21, 150, '~/Content/Images/VideoImg/JigarthandaDoubleXVideo.png', '~/Content/Images/PosterImg/JigarthandaDoubleX.png', 4.1, '~/Content/Images/VideoImg/JigarthandaDoubleXVideo.png'),
-(22, 148, '~/Content/Images/VideoImg/BheeshmaVideo.png', '~/Content/Images/PosterImg/Bheeshma.png', 3.9, '~/Content/Images/VideoImg/BheeshmaVideo.png'),
-(23, 145, '~/Content/Images/VideoImg/SarkaruVaariPaataVideo.png', '~/Content/Images/PosterImg/SarkaruVaariPaata.png', 3.6, '~/Content/Images/VideoImg/SarkaruVaariPaataVideo.png'),
-(24, 154, '~/Content/Images/VideoImg/LoveStoryVideo.png', '~/Content/Images/PosterImg/LoveStory.png', 4.0, '~/Content/Images/VideoImg/LoveStoryVideo.png'),
-(25, 142, '~/Content/Images/VideoImg/UppenaVideo.png', '~/Content/Images/PosterImg/Uppena.png', 3.7, '~/Content/Images/VideoImg/UppenaVideo.png'),
-(26, 150, '~/Content/Images/VideoImg/MajorVideo.png', '~/Content/Images/PosterImg/Major.png', 4.8, '~/Content/Images/VideoImg/MajorVideo.png'),
-(27, 128, '~/Content/Images/VideoImg/FreddyVideo.png', '~/Content/Images/PosterImg/Freddy.png', 3.5, '~/Content/Images/VideoImg/FreddyVideo.png'),
-(28, 132, '~/Content/Images/VideoImg/GoodbyeVideo.png', '~/Content/Images/PosterImg/Goodbye.png', 3.9, '~/Content/Images/VideoImg/GoodbyeVideo.png'),
-(29, 182, '~/Content/Images/VideoImg/RRRVideo.png', '~/Content/Images/PosterImg/RRR.png', 4.9, '~/Content/Images/VideoImg/RRRVideo.png'),
-(30, 140, '~/Content/Images/VideoImg/CID999Video.png', '~/Content/Images/PosterImg/CID999.png', 4.4, '~/Content/Images/VideoImg/CID999Video.png');
+.details-table th {
+    background-color: #f4f4f4;
+    color: #333;
+    width: 200px;
+    font-weight: 600;
+}
+
+.details-table tr:last-child td {
+    border-bottom: none;
+}
+
+p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+}
