@@ -1,27 +1,21 @@
 dl.details-table {
     display: grid;
-    grid-template-columns: 200px 1fr; /* first column for dt, second for dd */
-    row-gap: 10px;
-    column-gap: 20px;
-    max-width: 600px;
+    grid-template-columns: auto 1fr;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 80%;
     margin: 30px auto;
-    padding: 20px;
-    border: 2px solid #444;
-    background-color: #f9f9f9;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    border-collapse: collapse;
+}
+
+dl.details-table dt,
+dl.details-table dd {
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 dl.details-table dt {
-    font-weight: bold;
-    padding: 10px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
-}
-
-dl.details-table dd {
-    margin: 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
+    font-weight: bold;
 }
