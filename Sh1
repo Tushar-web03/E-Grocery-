@@ -1,26 +1,27 @@
-<h2 style="text-align:center; margin-bottom:20px;">Product Details</h2>
+dl.details-table {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* first column for dt, second for dd */
+    row-gap: 10px;
+    column-gap: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #444;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
 
-<table class="custom-details-table">
-    <tr>
-        <th>Name</th>
-        <td>@Model.Name</td>
-    </tr>
-    <tr>
-        <th>Price</th>
-        <td>₹@Model.Price</td>
-    </tr>
-    <tr>
-        <th>Quantity</th>
-        <td>@Model.Quantity</td>
-    </tr>
-    <tr>
-        <th>Description</th>
-        <td>@Model.Description</td>
-    </tr>
-</table>
+dl.details-table dt {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
 
-<div class="action-links">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
-    |
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-</div>
+dl.details-table dd {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
