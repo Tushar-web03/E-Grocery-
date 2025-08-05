@@ -1,33 +1,45 @@
-INSERT INTO CONTENT (ContentID, AdminID, Title, Description, ReleaseDate, ContentType, GenreID) VALUES
-(1, 2, 'Kalki 2898 AD', 'Mythological sci-fi epic.', '2024-06-27', 'Platinum', 5),
-(2, 2, 'Animal', 'Intense emotional action drama.', '2023-12-01', 'Platinum', 1),
-(3, 2, 'Jawan', 'A vigilante takes on corrupt systems.', '2023-09-07', 'Gold', 1),
-(4, 2, 'Pushpa 2', 'A smuggler’s rise continues.', '2025-08-15', 'Platinum', 6),
-(5, 2, 'Bhool Bhulaiyaa 2', 'A haunted palace brings chaos.', '2022-05-20', 'Gold', 2),
-(6, 2, 'Drishyam 2', 'Secrets unfold in this crime thriller.', '2022-11-18', 'Gold', 3),
-(7, 2, 'Brahmastra', 'Young man with supernatural power.', '2022-09-09', 'Platinum', 5),
-(8, 2, 'Rocky Aur Rani Ki Prem Kahani', 'Love story of different cultures.', '2023-07-28', 'Silver', 4),
-(9, 2, 'Sita Ramam', 'Romantic story via letters.', '2022-08-05', 'Gold', 4),
-(10, 2, 'Salaar', 'Dystopian action-packed revenge.', '2023-12-22', 'Platinum', 1),
+.custom-details-table {
+    width: 60%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border: 2px solid #333;
+    background-color: #fdfdfd;
+}
 
-(11, 2, 'KGF Chapter 2', 'Gold mafia rises again.', '2022-04-14', 'Platinum', 1),
-(12, 2, 'Gadar 2', 'A man returns for his son.', '2023-08-11', 'Gold', 1),
-(13, 2, 'Mission Raniganj', 'Mining disaster rescue mission.', '2023-10-06', 'Gold', 6),
-(14, 2, 'Pathaan', 'Spy action across continents.', '2023-01-25', 'Platinum', 1),
-(15, 2, 'Vikram Vedha', 'Cop vs gangster mind game.', '2022-09-30', 'Gold', 3),
-(16, 2, 'Shamshera', 'Freedom fighter against tyranny.', '2022-07-22', 'Silver', 1),
-(17, 2, 'Dasara', 'Alcohol politics and revenge.', '2023-03-30', 'Gold', 6),
-(18, 2, 'Kantara', 'Myth and folklore meet reality.', '2022-09-30', 'Gold', 4),
-(19, 2, 'Hi Nanna', 'Emotional father-daughter bond.', '2023-12-07', 'Silver', 4),
-(20, 2, 'Dunki', 'Illegal immigration journey.', '2023-12-21', 'Platinum', 4),
+.custom-details-table th,
+.custom-details-table td {
+    border: 1px solid #999;
+    padding: 12px 18px;
+    text-align: left;
+}
 
-(21, 2, 'Jigarthanda DoubleX', 'Gangster filmmaker clash.', '2023-11-10', 'Gold', 1),
-(22, 2, 'Bheeshma', 'Comedy about organic farming.', '2020-02-21', 'Silver', 2),
-(23, 2, 'Sarkaru Vaari Paata', 'Bank fraud and action.', '2022-05-12', 'Silver', 3),
-(24, 2, 'Love Story', 'Dance and caste battle.', '2021-09-24', 'Gold', 4),
-(25, 2, 'Uppena', 'Fisherman in love across caste.', '2021-02-12', 'Silver', 4),
-(26, 2, 'Major', 'Based on Major Sandeep Unnikrishnan.', '2022-06-03', 'Platinum', 6),
-(27, 2, 'Freddy', 'Dentist turns dark.', '2022-12-02', 'Gold', 3),
-(28, 2, 'Goodbye', 'Loss and life journey.', '2022-10-07', 'Silver', 4),
-(29, 2, 'RRR', 'Two heroes fight colonial rule.', '2022-03-25', 'Platinum', 1),
-(30, 2, 'CID 999', 'Detective hunts a criminal.', '2025-06-30', 'Platinum', 6);
+.custom-details-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    width: 200px;
+}
+
+.action-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-links .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
