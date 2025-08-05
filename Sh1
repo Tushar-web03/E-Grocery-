@@ -1,13 +1,13 @@
-<h2>Product Details</h2>
+<h2 style="text-align:center; margin-bottom:20px;">Product Details</h2>
 
-<table class="details-table">
+<table class="custom-details-table">
     <tr>
         <th>Name</th>
         <td>@Model.Name</td>
     </tr>
     <tr>
         <th>Price</th>
-        <td>@Model.Price</td>
+        <td>₹@Model.Price</td>
     </tr>
     <tr>
         <th>Quantity</th>
@@ -19,7 +19,8 @@
     </tr>
 </table>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="action-links">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
+    |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+</div>
