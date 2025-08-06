@@ -1,21 +1,25 @@
-dl.details-table {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    width: 80%;
-    margin: 30px auto;
-    font-family: Arial, sans-serif;
-    border-collapse: collapse;
-}
+<h2>Details</h2>
 
-dl.details-table dt,
-dl.details-table dd {
-    padding: 10px;
-    border: 1px solid #ccc;
-}
+<table class="details-table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>@Model.Price</td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+</table>
 
-dl.details-table dt {
-    background-color: #f0f0f0;
-    font-weight: bold;
-}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
