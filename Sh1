@@ -1,6 +1,6 @@
 <h2>Details</h2>
 
-<table class="details-table">
+<table class="egrocery-table">
     <tr>
         <th>Name</th>
         <td>@Model.Name</td>
@@ -20,6 +20,6 @@
 </table>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }, new { @class = "egrocery-btn" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "egrocery-btn" })
 </p>
